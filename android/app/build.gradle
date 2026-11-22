@@ -1,0 +1,26 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+}
+
+android {
+    namespace "com.father.son.mai300x_legends"
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.father.son.mai300x_legends"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+}
