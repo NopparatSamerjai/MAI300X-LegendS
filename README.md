@@ -1,0 +1,2 @@
+# MAI300X-LegendS
+MAI300X-LegendS App by FATHER x SON
