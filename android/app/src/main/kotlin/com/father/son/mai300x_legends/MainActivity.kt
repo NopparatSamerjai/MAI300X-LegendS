@@ -1,6 +1,3 @@
-package com.father.son.mai300x_legends
-
+package com.example.mai300xlegends
 import io.flutter.embedding.android.FlutterActivity
-
-class MainActivity: FlutterActivity() {
-}
+class MainActivity: FlutterActivity()
