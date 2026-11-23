@@ -1,28 +1,29 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
 }
 
 android {
-    namespace "com.father.son.mai300x_legends"
+    namespace "com.example.mai300xlegends"
     compileSdk 34
+    ndkVersion flutter.ndkVersion
 
     defaultConfig {
-        applicationId "com.father.son.mai300x_legends"
+        applicationId "com.example.mai300xlegends"
         minSdk 21
         targetSdk 34
-        versionCode 1
-        versionName "1.0.0"
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
     }
 
     buildTypes {
         release {
             signingConfig signingConfigs.debug
-            minifyEnabled false
-            shrinkResources false
         }
     }
 }
 
-dependencies {
+flutter {
+    source '../..'
 }
