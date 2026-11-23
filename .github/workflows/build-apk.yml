@@ -31,7 +31,7 @@ jobs:
       - name: Fix old Android folder
         run: |
           rm -rf android
-          flutter create .
+          flutter create --project-name mai300x_legends .
           
       - name: Build APK
         run: flutter build apk --release
