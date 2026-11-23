@@ -3,17 +3,16 @@ name: Build Flutter APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # กดรันเองได้ด้วย
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build APK
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+      
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -23,12 +22,17 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0' # ใช้เวอร์ชันใหม่ล่าสุด
+          flutter-version: '3.24.0'
           channel: 'stable'
           
       - name: Get dependencies
         run: flutter pub get
         
+      - name: Fix old Android folder
+        run: |
+          rm -rf android
+          flutter create .
+          
       - name: Build APK
         run: flutter build apk --release
         
