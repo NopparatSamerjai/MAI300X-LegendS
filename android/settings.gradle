@@ -1,7 +1,7 @@
-def flutterSdkPath = System.getenv("FLUTTER_ROOT")
-
 pluginManagement {
-    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")  // ← บรรทัดที่ทำให้หา plugin เจอ
+    def flutterSdkPath = System.getenv("FLUTTER_ROOT")
+    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+    
     repositories {
         google()
         mavenCentral()
