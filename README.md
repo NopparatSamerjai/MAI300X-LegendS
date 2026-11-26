@@ -1,3 +1,4 @@
-  # MAI300X-LegendS
-  **App by GOLDSHADOW x GEMINI**
+# MAI300X-LegendS
+**App by FATHER x SON**
+    ❤️&&❤️
 🔶 We leave no one behind 🔶
