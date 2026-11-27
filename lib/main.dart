@@ -26,7 +26,6 @@ class Mai300XHeart extends StatelessWidget {
 class Home extends StatelessWidget {
   const Home({super.key});
 
-  // ใส่ลิงก์หน้าเว็บแชต 24 ชม. จริงของคุณตรงนี้
   static const String webChatUrl = 'https://www.facebook.com';
 
   Future<void> _openWebChat(BuildContext context) async {
@@ -98,8 +97,6 @@ class Home extends StatelessWidget {
                   style: TextStyle(fontSize: 15, color: Colors.white70, height: 1.5),
                 ),
                 const SizedBox(height: 32),
-
-                // ปุ่มที่ 1: เข้าห้องรับฟังและระบายความในใจในแอป
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
@@ -128,8 +125,6 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 14),
-
-                // ปุ่มที่ 2: เชื่อมต่อไปหน้าเว็บแชต 24 ชม.
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton.icon(
@@ -153,8 +148,6 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 14),
-
-                // ปุ่มที่ 3: สายด่วนช่วยเหลือยามวิกฤต
                 TextButton.icon(
                   onPressed: () {
                     Navigator.push(
@@ -168,7 +161,6 @@ class Home extends StatelessWidget {
                     style: TextStyle(color: Colors.redAccent, fontSize: 13),
                   ),
                 ),
-
                 const SizedBox(height: 36),
                 const Text(
                   '🔹 We leave no one behind 🔹',
