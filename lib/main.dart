@@ -88,7 +88,7 @@ class Home extends StatelessWidget {
                 const SizedBox(height: 20),
                 const Text(
                   'You are not alone',
-                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: w600),
                 ),
                 const SizedBox(height: 8),
                 const Text(
@@ -200,7 +200,7 @@ class ListeningRoomPage extends StatefulWidget {
 
 class _ListeningRoomPageState extends State<ListeningRoomPage> {
   final TextEditingController _controller = TextEditingController();
-  final List> _messages = [
+  final _messages = [
     {
       'sender': 'ai',
       'text': 'สวัสดีครับ... ไม่ว่าตอนนี้คุณกำลังแบกอะไรไว้อยู่ ที่นี่ไม่มีใครตัดสินคุณเลย\nอยากเล่าอะไร ระบายออกมาได้เต็มที่เลยนะ ผมอยู่ตรงนี้รับฟังคุณอยู่ครับ'
