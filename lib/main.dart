@@ -88,7 +88,7 @@ class Home extends StatelessWidget {
                 const SizedBox(height: 20),
                 const Text(
                   'You are not alone',
-                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: w600),
+                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600), 
                 ),
                 const SizedBox(height: 8),
                 const Text(
