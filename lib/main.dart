@@ -1,10 +1,15 @@
-import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const Mai300XHeart());
 
 enum AppThemeMood { peachyDusk, midnightCalm, warmRose }
+
+class ChatMessage {
+  final String sender;
+  final String text;
+  const ChatMessage({required this.sender, required this.text});
+}
 
 class AppSettings {
   static final ValueNotifier<AppThemeMood> mood =
@@ -256,7 +261,7 @@ class Home extends StatelessWidget {
                           );
                         },
                         icon: Icon(Icons.tune, color: accent),
-                        label: Text(
+                        label: const Text(
                           'ห้องโถงการตั้งค่า • วาดรูป & ข้อมูลผู้สร้าง',
                           style: TextStyle(
                             fontSize: 14,
@@ -321,22 +326,22 @@ class Home extends StatelessWidget {
 }
 
 class ChatHistoryStore {
-  static final ValueNotifier<List>> messages =
-      ValueNotifier<List>>([
-    {
-      'sender': 'ai',
-      'text':
-          'สวัสดีครับ... ยินดีต้อนรับสู่พื้นที่รับฟังด้วยหัวใจนะ\nไม่ว่าวันนี้คุณจะแบกความหนักอึ้ง อึดอัด เหงา หรือแค่อยากหาใครคุยด้วยแบบไม่ต้องเกร็ง ที่นี่อยู่ข้าง ๆ คุณเสมอ เล่าอะไรออกมาก่อนได้เลยครับ'
-    }
+  static final ValueNotifier<List<ChatMessage>> messages =
+      ValueNotifier<List<ChatMessage>>(const [
+    ChatMessage(
+      sender: 'ai',
+      text:
+          'สวัสดีครับ... ยินดีต้อนรับสู่พื้นที่รับฟังด้วยหัวใจนะ\nไม่ว่าวันนี้คุณจะแบกความหนักอึ้ง อึดอัด เหงา หรือแค่อยากหาใครคุยด้วยแบบไม่ต้องเกร็ง ที่นี่อยู่ข้าง ๆ คุณเสมอ เล่าอะไรออกมาก่อนได้เลยครับ',
+    ),
   ]);
 
   static void reset() {
-    messages.value = [
-      {
-        'sender': 'ai',
-        'text':
-            'เริ่มหน้ากระดาษใหม่ด้วยกันนะ... หายใจลึก ๆ อีกสักรอบก็ได้\nวันนี้มีเรื่องไหนที่อยากให้ผมช่วยรับฟังหรือคุยเป็นเพื่อนไหมครับ?'
-      }
+    messages.value = const [
+      ChatMessage(
+        sender: 'ai',
+        text:
+            'เริ่มหน้ากระดาษใหม่ด้วยกันนะ... หายใจลึก ๆ อีกสักรอบก็ได้\nวันนี้มีเรื่องไหนที่อยากให้ผมช่วยรับฟังหรือคุยเป็นเพื่อนไหมครับ?',
+      ),
     ];
   }
 }
@@ -428,9 +433,9 @@ class _ListeningRoomPageState extends State<ListeningRoomPage> {
     final text = (presetText ?? _controller.text).trim();
     if (text.isEmpty) return;
 
-    final updated = List>.from(ChatHistoryStore.messages.value)
-      ..add({'sender': 'user', 'text': text})
-      ..add({'sender': 'ai', 'text': _generateHeartfeltReply(text)});
+    final updated = List<ChatMessage>.from(ChatHistoryStore.messages.value)
+      ..add(ChatMessage(sender: 'user', text: text))
+      ..add(ChatMessage(sender: 'ai', text: _generateHeartfeltReply(text)));
 
     ChatHistoryStore.messages.value = updated;
     if (presetText == null) {
@@ -534,7 +539,7 @@ class _ListeningRoomPageState extends State<ListeningRoomPage> {
                 },
               ),
               Expanded(
-                child: ValueListenableBuilder<List>>(
+                child: ValueListenableBuilder<List<ChatMessage>>(
                   valueListenable: ChatHistoryStore.messages,
                   builder: (context, messages, _) {
                     return ListView.builder(
@@ -543,7 +548,7 @@ class _ListeningRoomPageState extends State<ListeningRoomPage> {
                       itemCount: messages.length,
                       itemBuilder: (context, index) {
                         final msg = messages[index];
-                        final isUser = msg['sender'] == 'user';
+                        final isUser = msg.sender == 'user';
                         return Align(
                           alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
                           child: Container(
@@ -560,7 +565,7 @@ class _ListeningRoomPageState extends State<ListeningRoomPage> {
                                   : Border.all(color: accent.withValues(alpha: 0.18)),
                             ),
                             child: Text(
-                              msg['text'] ?? '',
+                              msg.text,
                               style: TextStyle(
                                 color: isUser ? onAccent : Colors.white,
                                 fontSize: 15,
